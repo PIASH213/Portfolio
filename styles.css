@@ -1,0 +1,493 @@
+/* --- CUSTOM VARIABLES --- */
+:root {
+  --bg-dark: #0a192f;
+  --bg-card: #112240;
+  --text-main: #e6f1ff;
+  --text-muted: #a8b2d1;
+  --accent: #64ffda;
+}
+
+/* --- GENERAL RESET & TYPOGRAPHY --- */
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  /* Using the modern font */
+  overflow-x: hidden;
+}
+
+/* --- HIGH CONTRAST FIXES --- */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+span,
+div {
+  color: var(--text-main);
+}
+
+.text-muted,
+.text-secondary {
+  color: var(--text-muted) !important;
+}
+
+.text-accent {
+  color: var(--accent) !important;
+}
+
+.font-code {
+  font-family: 'JetBrains Mono', monospace;
+  /* Using the coding font */
+}
+
+/* --- SECTION BACKGROUND ALTERNATION --- */
+/* Adds depth by making alternate sections slightly lighter */
+#about,
+#skills,
+#contact {
+  background-color: var(--bg-card);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-card);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  background-color: rgba(10, 25, 47, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 15px 0;
+  box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+}
+
+.navbar-nav {
+  counter-reset: nav-count -1;
+}
+
+.nav-link {
+  counter-increment: nav-count;
+  color: var(--text-main) !important;
+  font-size: 0.9rem;
+  margin-left: 1.5rem;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--accent) !important;
+}
+
+.nav-link::before {
+  content: "0" counter(nav-count) ".";
+  margin-right: 5px;
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+}
+
+/* --- BUTTONS --- */
+.btn-custom {
+  color: var(--accent);
+  background-color: transparent;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: rgba(100, 255, 218, 0.1);
+  color: var(--accent) !important;
+  transform: translateY(-3px);
+}
+
+/* --- SECTION STYLING --- */
+section {
+  padding: 80px 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  white-space: nowrap;
+  color: var(--text-main);
+}
+
+.section-header::after {
+  content: "";
+  display: block;
+  width: 300px;
+  height: 1px;
+  background-color: var(--bg-card);
+  margin-left: 20px;
+}
+
+.section-number {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent);
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+/* --- HERO SECTION --- */
+.hero-img-box {
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.hero-img {
+  width: 100%;
+  border-radius: 10px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s;
+  border: 2px solid var(--accent);
+  backface-visibility: hidden;
+}
+
+.hero-img:hover {
+  filter: none;
+  transform: translate(-5px, -5px);
+}
+
+.hero-img-box::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  top: 15px;
+  left: 15px;
+  z-index: 1;
+  transition: all 0.3s;
+}
+
+.hero-img-box:hover::after {
+  top: 10px;
+  left: 10px;
+}
+
+/* --- ABOUT SECTION STYLING --- */
+.about-skills-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 200px));
+  gap: 0px 10px;
+  padding: 0;
+  margin: 20px 0 0 0;
+  overflow: hidden;
+  list-style: none;
+}
+
+.about-skills-list li {
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+
+.about-skills-list li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.about-img-box {
+  position: relative;
+  max-width: 300px;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.about-img {
+  position: relative;
+  z-index: 2;
+  border-radius: 5px;
+  filter: grayscale(100%) contrast(1.1);
+  transition: all 0.3s ease;
+}
+
+.about-img-box::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 2px solid var(--accent);
+  top: 15px;
+  left: 15px;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.about-img-box:hover .about-img {
+  filter: none;
+  transform: translate(-5px, -5px);
+}
+
+.about-img-box:hover::after {
+  top: 10px;
+  left: 10px;
+}
+
+/* --- CARDS (Used for Projects & CP) --- */
+.card-custom {
+  background-color: var(--bg-card);
+  border: none;
+  border-radius: 5px;
+  padding: 1.5rem;
+  /* Make cards 1:1 Square */
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s;
+}
+
+.card-custom:hover {
+  transform: translateY(-7px);
+}
+
+.card-custom h4,
+.card-custom h5 {
+  color: var(--text-main);
+}
+
+.card-custom p {
+  color: var(--text-muted);
+}
+
+/* --- FORMS --- */
+.form-control {
+  background-color: var(--bg-card);
+  border: 1px solid #233554;
+  color: #ffffff !important;
+  padding: 15px;
+}
+
+.form-control:focus {
+  background-color: var(--bg-card);
+  border-color: var(--accent);
+  color: #ffffff !important;
+  box-shadow: none;
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* --- SOCIAL ICONS --- */
+.social-link {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  margin-right: 20px;
+  transition: 0.3s;
+}
+
+.social-link:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* --- PROGRESS BARS --- */
+.progress {
+  height: 1rem;
+  background-color: var(--bg-card);
+  border-radius: 0.25rem;
+  overflow: visible;
+}
+
+.skill-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Custom Progress Colors */
+.progress-bar-c {
+  background-color: #2196F3 !important;
+}
+
+.progress-bar-cpp {
+  background-color: #5C6BC0 !important;
+}
+
+.progress-bar-java {
+  background-color: #FF7043 !important;
+}
+
+.progress-bar-html {
+  background-color: #AB47BC !important;
+}
+
+.progress-bar-ms {
+  background-color: #4CAF50 !important;
+}
+
+.progress-bar-ds {
+  background-color: #FFCA28 !important;
+}
+
+.progress-bar-latex {
+  background-color: #00897B !important;
+}
+
+/* --- DROPDOWNS (CP PROFILES) --- */
+.custom-dropdown {
+  background-color: var(--bg-card);
+  border: 1px solid var(--accent);
+  box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+}
+
+.custom-dropdown .dropdown-item,
+.custom-dropdown .dropdown-item-text {
+  color: var(--text-main);
+  transition: all 0.2s;
+}
+
+.custom-dropdown .dropdown-item:hover {
+  background-color: rgba(100, 255, 218, 0.1);
+  color: var(--accent);
+}
+
+.dropdown-divider {
+  border-top: 1px solid rgba(136, 146, 176, 0.2);
+}
+
+.cp-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* --- EDUCATION SECTION STYLING (FIXED) --- */
+
+/* 1. Logo Sizing - FIXED: Reduced to 60px */
+.edu-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 15px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* 2. Vertical Tabs Styling (Added back in) */
+.edu-nav-pills .nav-link {
+  background-color: var(--bg-card);
+  color: var(--text-muted);
+  border-radius: 5px;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  margin-bottom: 10px;
+}
+
+.edu-nav-pills .nav-link h5 {
+  color: var(--text-main);
+  font-weight: 600;
+  margin: 0;
+}
+
+.edu-nav-pills .nav-link small {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Tab Hover State */
+.edu-nav-pills .nav-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background-color: rgba(100, 255, 218, 0.05);
+}
+
+/* Tab Active State */
+.edu-nav-pills .nav-link.active {
+  background-color: var(--accent) !important;
+  color: var(--bg-dark) !important;
+}
+
+.edu-nav-pills .nav-link.active h5,
+.edu-nav-pills .nav-link.active small {
+  color: var(--bg-dark) !important;
+}
+
+/* Tab Badges */
+.edu-nav-badge {
+  background-color: rgba(10, 25, 47, 0.3);
+  color: var(--text-main);
+  font-family: 'JetBrains Mono', monospace;
+  padding: 0.5em 0.8em;
+}
+
+.nav-link.active .edu-nav-badge {
+  background-color: rgba(10, 25, 47, 0.8) !important;
+  color: var(--accent) !important;
+}
+
+/* Content Area */
+.edu-tab-content {
+  background-color: var(--bg-card);
+  border-radius: 5px;
+  height: 100%;
+}
+
+.edu-content-border {
+  border-left: 4px solid var(--accent);
+  height: 100%;
+}
+
+.edu-institution a {
+  color: var(--text-main);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.edu-institution a:hover {
+  color: var(--accent);
+}
+
+.achievement-list li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.achievement-list i {
+  color: var(--accent);
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
