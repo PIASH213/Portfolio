@@ -9,7 +9,8 @@
 body {
   background-color: var(--bg-dark);
   color: var(--text-main);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Sora', sans-serif;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
@@ -252,7 +253,7 @@ section {
   border: none;
   border-radius: 5px;
   padding: 1.5rem;
-  aspect-ratio: 1 / 1;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -475,5 +476,6 @@ section {
     font-size: 1.2rem;
   }
 }
+
 
 
